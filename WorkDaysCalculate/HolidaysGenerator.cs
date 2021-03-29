@@ -12,18 +12,41 @@ namespace CalculateHolidays.WorkDaysCalculate
     /// </summary>
     public class HolidaysGenerator
     {
+        /// <summary>
+        /// Get Holidays
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public int GetHolidaysCount(DateTime start, DateTime end, string type)
+        {
+            if(type=="fixed")
+            {
+                return GetFixedHolidaysCount(start, end);
+            }
+            else if(type=="dynamic")
+            {
+                return GetDynamicHolidayCount(start, end);
+            }
+            else
+            {
+                return 0;  //by default, not handled, return 0
+            }
+        }
+
         #region Fixed Holiday List
         /// <summary>
         /// Pre-loaded Holidays
         /// Currently is hard coded in the code
         /// Can be configured in the configuration file later
         /// </summary>
-        public List<DateTime> fixedHolidays = null;
+        private List<DateTime> fixedHolidays = null;
         /// <summary>
         /// Get Fixed Holidays
         /// </summary>
         /// <returns></returns>
-        public bool LoadFixedHolidays()
+        private bool LoadFixedHolidays()
         {
             //to do
             //Redo this function to load from the configuration file -- extend
@@ -56,7 +79,7 @@ namespace CalculateHolidays.WorkDaysCalculate
         /// <param name="start"></param>
         /// <param name="end"></param>
         /// <returns></returns>
-        public int GetFixedHolidaysCount(DateTime start, DateTime end)
+        private int GetFixedHolidaysCount(DateTime start, DateTime end)
         {
             if (fixedHolidays == null) LoadFixedHolidays();
 
@@ -74,9 +97,9 @@ namespace CalculateHolidays.WorkDaysCalculate
         #endregion
 
         #region Dynamc Holiday List
-        public List<DateTime> fixedDateHolidays = null;
-        public List<DateTime> movableHolidays = null;
-        public List<DateTime> certainOccuranceHolidays = null;
+        private List<DateTime> fixedDateHolidays = null;
+        private List<DateTime> movableHolidays = null;
+        private List<DateTime> certainOccuranceHolidays = null;
 
         /// <summary>
         /// Load Dynamic Holiday
@@ -84,7 +107,7 @@ namespace CalculateHolidays.WorkDaysCalculate
         /// <param name="yearStart"></param>
         /// <param name="yearEnd"></param>
         /// <returns></returns>
-        public bool LoadDynamicHolidays(int yearStart, int yearEnd)
+        private bool LoadDynamicHolidays(int yearStart, int yearEnd)
         {
             if (yearStart < 2021 || yearStart > 2029 || yearEnd < 2021 || yearEnd > 2029) return false;
             try
@@ -110,7 +133,7 @@ namespace CalculateHolidays.WorkDaysCalculate
         /// <param name="start"></param>
         /// <param name="end"></param>
         /// <returns></returns>
-        public int GetDynamicHolidayCount(DateTime start, DateTime end)
+        private int GetDynamicHolidayCount(DateTime start, DateTime end)
         {
             if (start > end) return 0;
             LoadDynamicHolidays(start.Year, end.Year); // restrict the holiday list to potential period
@@ -131,7 +154,7 @@ namespace CalculateHolidays.WorkDaysCalculate
             {
                 if (isDateWorkDaysInBetween(date, start, end)) count++;
             }
-            return count++;
+            return count;
         }
 
         private bool isDateWorkDaysInBetween(DateTime date,DateTime start, DateTime end)

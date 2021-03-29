@@ -63,7 +63,7 @@ namespace CalculateHolidays.WorkDaysCalculate
            
             HolidaysGenerator generator = new HolidaysGenerator();
 
-            return businessDays - generator.GetFixedHolidaysCount(start, end);
+            return businessDays - generator.GetHolidaysCount(start, end,"fixed");
         }
 
         public static int getWorkDaysInBetweenDynamicHoliday(DateTime start, DateTime end)
@@ -73,7 +73,7 @@ namespace CalculateHolidays.WorkDaysCalculate
 
             HolidaysGenerator generator = new HolidaysGenerator();
 
-            return businessDays - generator.GetDynamicHolidayCount(start, end);
+            return businessDays - generator.GetHolidaysCount(start, end,"dynamic");
         }
         #endregion
 
