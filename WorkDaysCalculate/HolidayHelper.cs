@@ -8,6 +8,13 @@ namespace CalculateHolidays.WorkDaysCalculate
     public static class HolidayHelper
     {
 
+        /// <summary>
+        /// check the date is between the start and end
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
         public static bool isDateWorkDaysInBetween(DateTime date, DateTime start, DateTime end)
         {
             //If Date is in between, as current date is Date Only, no need to consider the time difference.
