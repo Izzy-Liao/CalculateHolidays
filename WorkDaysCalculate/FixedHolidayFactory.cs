@@ -9,6 +9,7 @@ namespace CalculateHolidays.WorkDaysCalculate
         public override int GetHolidayCount(DateTime start, DateTime end)
         {
             if (holidays == null) LoadHolidays(start, end);
+            if (holidays == null) return 0;
 
             int count = 0;
             foreach (DateTime date in holidays)
