@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using CalculateHolidays.Models;
 using CalculateHolidays.WorkDaysCalculate;
 using CalculateHolidays.Shared;
 

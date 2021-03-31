@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Nager.Date;
-using Nager.Date.Model;
 using CalculateHolidays.Shared;
 
 namespace CalculateHolidays.WorkDaysCalculate
