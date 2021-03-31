@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CalculateHolidays.WorkDaysCalculate
 {
-    public class FixedHolidayFactory:HolidaysFactory,IHoliday
+    public class FixedHolidayFactory:HolidaysFactory
     {
  
         /// <summary>
@@ -41,7 +41,7 @@ namespace CalculateHolidays.WorkDaysCalculate
             return true;
         }
 
-        public int GetHolidayCount(DateTime start, DateTime end)
+        public override int GetHolidayCount(DateTime start, DateTime end)
         {
             if (holidays == null) LoadHolidays(start, end);
 

@@ -23,7 +23,7 @@ namespace CalculateHolidays.WorkDaysCalculate
         //    public  int GetHolidaysCount(DateTime start, DateTime end);
         protected bool LoadHolidays(DateTime start, DateTime end) { return true; }
 
-        public int GetHolidayCount(DateTime start, DateTime end)
+       public virtual int GetHolidayCount(DateTime start, DateTime end)
         {
             var allHolidays = DateSystem.GetPublicHoliday(start.AddDays(1), end.AddDays(-1), CountryCode.AU);
             var countOfHolidaysNotInWeekend = 0;

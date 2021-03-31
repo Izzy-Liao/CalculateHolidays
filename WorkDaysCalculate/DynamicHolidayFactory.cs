@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CalculateHolidays.WorkDaysCalculate
 {
-    public class DynamicHolidayFactory:HolidaysFactory,IHoliday
+    public class DynamicHolidayFactory:HolidaysFactory
     {
       //  private List<DateTime> holidays = null;
 
@@ -93,7 +93,7 @@ namespace CalculateHolidays.WorkDaysCalculate
             return true;
         }
 
-        public int GetHolidayCount(DateTime start, DateTime end)
+        public override int GetHolidayCount(DateTime start, DateTime end)
         {
             if (!LoadHolidays(start, end)) return 0;
             int count = 0;
