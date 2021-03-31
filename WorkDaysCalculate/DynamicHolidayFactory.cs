@@ -7,9 +7,7 @@ namespace CalculateHolidays.WorkDaysCalculate
 {
     public class DynamicHolidayFactory:HolidaysFactory
     {
-        private List<DateTime> fixedDateHolidays = null;
-        private List<DateTime> movableHolidays = null;
-        private List<DateTime> certainOccuranceHolidays = null;
+        private List<DateTime> holidays = null;
 
 
         public override bool LoadHolidays(DateTime start, DateTime end)
@@ -23,9 +21,8 @@ namespace CalculateHolidays.WorkDaysCalculate
             try
             {
                 //Always reload the list... need revisit
-                fixedDateHolidays = new List<DateTime>();
-                movableHolidays = new List<DateTime>();
-                certainOccuranceHolidays = new List<DateTime>();
+                holidays = new List<DateTime>();
+               
                 LoadFixedDateOrMovableHolidays(yearStart, yearEnd);
 
                 LoadCertainOccuranceHolidays(yearStart, yearEnd);
@@ -47,21 +44,14 @@ namespace CalculateHolidays.WorkDaysCalculate
         {
             LoadHolidays(start, end);
             int count = 0;
-            foreach (DateTime date in fixedDateHolidays)
+            foreach (DateTime date in holidays)
             {
                 if (HolidayHelper.isDateWorkDaysInBetween(date, start, end))
                 {
                     count++;
                 }
             }
-            foreach (DateTime date in movableHolidays)
-            {
-                if (HolidayHelper.isDateWorkDaysInBetween(date, start, end)) count++;
-            }
-            foreach (DateTime date in certainOccuranceHolidays)
-            {
-                if (HolidayHelper.isDateWorkDaysInBetween(date, start, end)) count++;
-            }
+        
             return count;
         }
 
@@ -83,11 +73,11 @@ namespace CalculateHolidays.WorkDaysCalculate
                     {
                         if (date.DayOfWeek == DayOfWeek.Saturday) date = date.AddDays(2);
                         else if (date.DayOfWeek == DayOfWeek.Sunday) date = date.AddDays(1);
-                        movableHolidays.Add(date);
+                        holidays.Add(date);
                     }
                     else
                     {
-                        fixedDateHolidays.Add(date);
+                        holidays.Add(date);
                     }
 
                 }
@@ -117,7 +107,7 @@ namespace CalculateHolidays.WorkDaysCalculate
                     gap = gap < 0 ? gap + 7 : gap;
 
                     DateTime holidayDate = firstDateOftheMonth.AddDays(gap + (rule.no - 1) * 7);
-                    certainOccuranceHolidays.Add(holidayDate);
+                    holidays.Add(holidayDate);
                 }
             }
             return true;
