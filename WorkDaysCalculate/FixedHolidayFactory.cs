@@ -14,7 +14,7 @@ namespace CalculateHolidays.WorkDaysCalculate
         /// Get Fixed Holidays
         /// </summary>
         /// <returns></returns>
-        new protected  bool LoadHolidays(DateTime start, DateTime end)
+         protected override  bool LoadHolidays(DateTime start, DateTime end)
         {
             //to do
             //Redo this function to load from the configuration file -- extend

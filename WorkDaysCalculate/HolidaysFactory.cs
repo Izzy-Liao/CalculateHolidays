@@ -21,7 +21,7 @@ namespace CalculateHolidays.WorkDaysCalculate
     {
         protected List<DateTime> holidays = null;
  
-        protected bool LoadHolidays(DateTime start, DateTime end) { return true; }
+        protected virtual bool LoadHolidays(DateTime start, DateTime end) { return true; }
 
         //use the library to get Holiday Count -- default behaviour
        public virtual int GetHolidayCount(DateTime start, DateTime end)
