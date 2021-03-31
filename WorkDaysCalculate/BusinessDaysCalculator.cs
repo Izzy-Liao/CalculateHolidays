@@ -18,34 +18,6 @@ namespace CalculateHolidays.WorkDaysCalculate
     /// </summary>
     public static class BusinessDaysCalculator
     {
-        #region Public Method
-        /// <summary>
-        /// Get week days (exclude start date and end date)
-        /// Exclude weekend
-        /// Exclude Public Holidays in work days
-        /// </summary>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
-        /// <returns></returns>
-        public static int getBusinessDaysInBetween(DateTime start, DateTime end)
-        {
-            if (start > end) return -1;
-            var workDays = getWorkDaysInBetween(start, end);
-            var holidaysNotInWeekend = GetAllHolidaysNotInWeekend(start, end);
-            return workDays - holidaysNotInWeekend;
-           // return getWeekDaysInBetween(start, end) - GetAllHolidaysNotInWeekend(start, end);
-        }
-      
-        private static int getWorkDaysInBetween(DateTime start, DateTime end)
-        {
-            if (start > end) return -1;
-            var totalDays = end.Subtract(start).Days; // days gap, exclude 'start date' and 'end date'
-
-            //Get the days (divide this into two parts: how manys week days in full week + how many days in partial week)
-            int businessdays = GetWorkDaysInFullWeek(totalDays) + GetWorkDaysInPartialWeek(start,totalDays);
-            return businessdays;
-        }
-
         public static int getWorkDaysInBetween(DateTime start, DateTime end, HolidayType type)
         {
             if (start > end) return -1;
@@ -59,16 +31,25 @@ namespace CalculateHolidays.WorkDaysCalculate
             {
                 factory = new FixedHolidayFactory();
             }
+            else if(type == HolidayType.Default)
+            {
+                factory = new HolidaysFactory();
+            }
             else
             {
-                getWorkDaysInBetween(start, end);
+                //factory = null; do nothing
+              //  getWorkDaysInBetween(start, end);
             }
 
-            return businessDays - factory.GetHolidayCount(start, end);
+            if (factory != null)
+                return businessDays - factory.GetHolidayCount(start, end);
+            else
+                return businessDays;
+
 
         }
         
-        #endregion
+     
 
         #region Private Methods
         /// <summary>
@@ -102,25 +83,17 @@ namespace CalculateHolidays.WorkDaysCalculate
             return weekDays;
         }
 
-        private static int GetAllHolidaysNotInWeekend(DateTime start, DateTime end)
-        {
-            var allHolidays = DateSystem.GetPublicHoliday(start.AddDays(1), end.AddDays(-1), CountryCode.AU);
-            var countOfHolidaysNotInWeekend = 0;
-            foreach (PublicHoliday d in allHolidays)
-            {
-                if (!DateSystem.IsWeekend(d.Date, CountryCode.AU) )
-                {
-                    // Curently hard cord to only consider public holidays in all county and NSW public holiday
-                    // the function could potentially extended
-                    if (d.Counties == null || d.Counties.Contains("AUS-NSW"))
-                    {
-                        countOfHolidaysNotInWeekend++;
-                    }
-                }
-            }
 
-            return countOfHolidaysNotInWeekend;
+        private static int getWorkDaysInBetween(DateTime start, DateTime end)
+        {
+            if (start > end) return -1;
+            var totalDays = end.Subtract(start).Days; // days gap, exclude 'start date' and 'end date'
+
+            //Get the days (divide this into two parts: how manys week days in full week + how many days in partial week)
+            int businessdays = GetWorkDaysInFullWeek(totalDays) + GetWorkDaysInPartialWeek(start, totalDays);
+            return businessdays;
         }
+
         #endregion
 
     }

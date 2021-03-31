@@ -11,7 +11,8 @@ namespace CalculateHolidays.Shared
         { 
                 Fixed,
                 Dynamic,
-                Default
+                Default,  //Australia NSW
+                None
         }
 
 }

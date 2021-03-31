@@ -32,14 +32,14 @@ namespace CalculateHolidays.Controllers
                 int weekdays = -1;
                 if (action.Equals("Default", StringComparison.OrdinalIgnoreCase))
                 {
-                    weekdays = BusinessDaysCalculator.getBusinessDaysInBetween(start, end);
+                    weekdays = BusinessDaysCalculator.getWorkDaysInBetween(start, end,HolidayType.Default);
                     var message = String.Format("There are {0} business days between {1} and {2}! (Excluded weekends and NSW public holidays)", weekdays, start.ToShortDateString(), end.ToShortDateString());
                     //   TempData["ResultMessage"] = "there are " + weekdays + " days  between " + start.ToShortDateString() + " and " + end.ToShortDateString() ;
                     SetTempDataMessage(weekdays, message);
                 }
                 else if (action.Equals("GetWorkDays", StringComparison.OrdinalIgnoreCase))
                 {
-                    weekdays = BusinessDaysCalculator.getWorkDaysInBetween(start, end,HolidayType.Default);
+                    weekdays = BusinessDaysCalculator.getWorkDaysInBetween(start, end,HolidayType.None);
                     var message = String.Format("There are {0} days between {1} and {2}! (Excludes weekends)", weekdays, start.ToShortDateString(), end.ToShortDateString());
                     SetTempDataMessage(weekdays, message);
                 }
