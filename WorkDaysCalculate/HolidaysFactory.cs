@@ -20,9 +20,10 @@ namespace CalculateHolidays.WorkDaysCalculate
     public class HolidaysFactory:IHoliday
     {
         protected List<DateTime> holidays = null;
-        //    public  int GetHolidaysCount(DateTime start, DateTime end);
+ 
         protected bool LoadHolidays(DateTime start, DateTime end) { return true; }
 
+        //use the library to get Holiday Count -- default behaviour
        public virtual int GetHolidayCount(DateTime start, DateTime end)
         {
             var allHolidays = DateSystem.GetPublicHoliday(start.AddDays(1), end.AddDays(-1), CountryCode.AU);
