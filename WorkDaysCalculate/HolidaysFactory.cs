@@ -10,12 +10,6 @@ using Nager.Date.Model;
 namespace CalculateHolidays.WorkDaysCalculate
 {
 
-    public interface IHoliday
-    {
-
-        public int GetHolidayCount(DateTime start, DateTime end);
-    }
-
 
     public class HolidaysFactory:IHoliday
     {
@@ -40,11 +34,7 @@ namespace CalculateHolidays.WorkDaysCalculate
                     }
                 }
             }
-
             return countOfHolidaysNotInWeekend;
         }
-
-
     }
-
 }
