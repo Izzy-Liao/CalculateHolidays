@@ -11,7 +11,7 @@ namespace CalculateHolidays.WorkDaysCalculate
     public abstract class HolidaysFactory
     {
         public abstract int GetHolidaysCount(DateTime start, DateTime end);
-        public abstract bool LoadHolidays(DateTime start, DateTime end);
+        protected abstract bool LoadHolidays(DateTime start, DateTime end);
     }
 
 }

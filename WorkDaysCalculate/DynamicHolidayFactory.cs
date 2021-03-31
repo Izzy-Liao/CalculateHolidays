@@ -10,7 +10,7 @@ namespace CalculateHolidays.WorkDaysCalculate
         private List<DateTime> holidays = null;
 
 
-        public override bool LoadHolidays(DateTime start, DateTime end)
+        protected override bool LoadHolidays(DateTime start, DateTime end)
         {
 
             if (start > end) return false;
