@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Nager.Date;
 using Nager.Date.Model;
+using CalculateHolidays.Shared;
 
 namespace CalculateHolidays.WorkDaysCalculate
 {
@@ -50,16 +51,16 @@ namespace CalculateHolidays.WorkDaysCalculate
             return businessdays;
         }
 
-        public static int getWorkDaysInBetween(DateTime start, DateTime end, string type)
+        public static int getWorkDaysInBetween(DateTime start, DateTime end, HolidayType type)
         {
             if (start > end) return -1;
             var businessDays = getWorkDaysInBetween(start, end);
             HolidaysFactory factory = null;
-            if (type == "dynamic")
+            if (type == HolidayType.Dynamic)
             {
                 factory = new DynamicHolidayFactory();
             }
-            else if (type == "fixed")
+            else if (type == HolidayType.Fixed)
             {
                 factory = new FixedHolidayFactory();
             }
