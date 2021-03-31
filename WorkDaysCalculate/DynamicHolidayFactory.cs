@@ -7,10 +7,24 @@ namespace CalculateHolidays.WorkDaysCalculate
 {
     public class DynamicHolidayFactory:HolidaysFactory
     {
-      //  private List<DateTime> holidays = null;
+        //  private List<DateTime> holidays = null;
 
+        public override int GetHolidayCount(DateTime start, DateTime end)
+        {
+            if (!LoadHolidays(start, end)) return 0;
+            int count = 0;
+            foreach (DateTime date in holidays)
+            {
+                if (HolidayHelper.isDateWorkDaysInBetween(date, start, end))
+                {
+                    count++;
+                }
+            }
 
-         protected override bool LoadHolidays(DateTime start, DateTime end)
+            return count;
+        }
+
+        protected override bool LoadHolidays(DateTime start, DateTime end)
         {
 
             if (start > end) return false;
@@ -33,8 +47,6 @@ namespace CalculateHolidays.WorkDaysCalculate
                 return false;
             }
         }
-
-
 
         private bool LoadFixedDateOrMovableHolidays(int yearStart, int yearEnd)
         {
@@ -65,7 +77,6 @@ namespace CalculateHolidays.WorkDaysCalculate
             return true;
         }
 
-
         private bool LoadCertainOccuranceHolidays(int yearStart, int yearEnd)
         {
 
@@ -93,19 +104,5 @@ namespace CalculateHolidays.WorkDaysCalculate
             return true;
         }
 
-        public override int GetHolidayCount(DateTime start, DateTime end)
-        {
-            if (!LoadHolidays(start, end)) return 0;
-            int count = 0;
-            foreach (DateTime date in holidays)
-            {
-                if (HolidayHelper.isDateWorkDaysInBetween(date, start, end))
-                {
-                    count++;
-                }
-            }
-
-            return count;
-        }
     }
 }

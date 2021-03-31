@@ -9,12 +9,25 @@ namespace CalculateHolidays.WorkDaysCalculate
 {
     public class FixedHolidayFactory:HolidaysFactory
     {
- 
+        public override int GetHolidayCount(DateTime start, DateTime end)
+        {
+            if (holidays == null) LoadHolidays(start, end);
+
+            int count = 0;
+            foreach (DateTime date in holidays)
+            {
+                if (HolidayHelper.isDateWorkDaysInBetween(date, start, end))
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
         /// <summary>
         /// Get Fixed Holidays
         /// </summary>
         /// <returns></returns>
-         protected override  bool LoadHolidays(DateTime start, DateTime end)
+        protected override  bool LoadHolidays(DateTime start, DateTime end)
         {
             //to do
             //Redo this function to load from the configuration file -- extend
@@ -41,20 +54,5 @@ namespace CalculateHolidays.WorkDaysCalculate
             return true;
         }
 
-        public override int GetHolidayCount(DateTime start, DateTime end)
-        {
-            if (holidays == null) LoadHolidays(start, end);
-
-            int count = 0;
-            foreach (DateTime date in holidays)
-            {
-                if (HolidayHelper.isDateWorkDaysInBetween(date, start, end))
-                {
-                    count++;
-                }
-            }
-            return count;
-
-        }
     }
 }
