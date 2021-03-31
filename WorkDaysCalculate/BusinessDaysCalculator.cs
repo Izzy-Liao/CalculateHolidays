@@ -35,12 +35,7 @@ namespace CalculateHolidays.WorkDaysCalculate
             return workDays - holidaysNotInWeekend;
            // return getWeekDaysInBetween(start, end) - GetAllHolidaysNotInWeekend(start, end);
         }
-        /// <summary>
-        /// Get week days (exclude start date, end date, weekend)
-        /// </summary>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
-        /// <returns></returns>
+      
         private static int getWorkDaysInBetween(DateTime start, DateTime end)
         {
             if (start > end) return -1;
@@ -55,7 +50,7 @@ namespace CalculateHolidays.WorkDaysCalculate
         {
             if (start > end) return -1;
             var businessDays = getWorkDaysInBetween(start, end);
-            HolidaysFactory factory = null;
+            IHoliday factory = null;
             if (type == HolidayType.Dynamic)
             {
                 factory = new DynamicHolidayFactory();
@@ -69,7 +64,7 @@ namespace CalculateHolidays.WorkDaysCalculate
                 getWorkDaysInBetween(start, end);
             }
 
-            return businessDays - factory.GetHolidaysCount(start, end);
+            return businessDays - factory.GetHolidayCount(start, end);
 
         }
         

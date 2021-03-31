@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace CalculateHolidays.WorkDaysCalculate
 {
-    public class DynamicHolidayFactory:HolidaysFactory
+    public class DynamicHolidayFactory:HolidaysFactory,IHoliday
     {
-        private List<DateTime> holidays = null;
+      //  private List<DateTime> holidays = null;
 
 
-        protected override bool LoadHolidays(DateTime start, DateTime end)
+        new protected bool LoadHolidays(DateTime start, DateTime end)
         {
 
             if (start > end) return false;
@@ -34,26 +34,6 @@ namespace CalculateHolidays.WorkDaysCalculate
             }
         }
 
-        /// <summary>
-        /// Get Dynamics Holidays based on the rule sets - excluded holiday on weekend
-        /// </summary>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
-        /// <returns></returns>
-        public override int GetHolidaysCount(DateTime start, DateTime end)
-        {
-            if (!LoadHolidays(start, end)) return 0;
-            int count = 0;
-            foreach (DateTime date in holidays)
-            {
-                if (HolidayHelper.isDateWorkDaysInBetween(date, start, end))
-                {
-                    count++;
-                }
-            }
-        
-            return count;
-        }
 
 
         private bool LoadFixedDateOrMovableHolidays(int yearStart, int yearEnd)
@@ -113,5 +93,19 @@ namespace CalculateHolidays.WorkDaysCalculate
             return true;
         }
 
+        public int GetHolidayCount(DateTime start, DateTime end)
+        {
+            if (!LoadHolidays(start, end)) return 0;
+            int count = 0;
+            foreach (DateTime date in holidays)
+            {
+                if (HolidayHelper.isDateWorkDaysInBetween(date, start, end))
+                {
+                    count++;
+                }
+            }
+
+            return count;
+        }
     }
 }

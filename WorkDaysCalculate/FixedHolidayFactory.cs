@@ -7,19 +7,14 @@ using System.Threading.Tasks;
 
 namespace CalculateHolidays.WorkDaysCalculate
 {
-    public class FixedHolidayFactory:HolidaysFactory
+    public class FixedHolidayFactory:HolidaysFactory,IHoliday
     {
-        /// <summary>
-        /// Pre-loaded Holidays
-        /// Currently is hard coded in the code
-        /// Can be configured in the configuration file later
-        /// </summary>
-        private List<DateTime> fixedHolidays = null;
+ 
         /// <summary>
         /// Get Fixed Holidays
         /// </summary>
         /// <returns></returns>
-        protected override bool LoadHolidays(DateTime start, DateTime end)
+        new protected  bool LoadHolidays(DateTime start, DateTime end)
         {
             //to do
             //Redo this function to load from the configuration file -- extend
@@ -34,30 +29,24 @@ namespace CalculateHolidays.WorkDaysCalculate
                 "26/01/2028","02/04/2028","01/06/2028","25/12/2028",
                 "26/01/2029","02/04/2029","01/06/2029","25/12/2029"};
 
-            fixedHolidays = new List<DateTime>();
+            holidays = new List<DateTime>();
 
             foreach (String s in holidayStrings)
             {
                 DateTime date = DateTime.MinValue;
                 if (DateTime.TryParseExact(s, "dd/MM/yyyy", CultureInfo.CurrentCulture, DateTimeStyles.None, out date)) // Convert the string to DateTime, using default locale, 
-                    fixedHolidays.Add(date);
+                    holidays.Add(date);
             }
 
             return true;
         }
 
-        /// <summary>
-        /// Get the number of holiday between start date and end date (exclude the date in the weekend)
-        /// </summary>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
-        /// <returns></returns>
-        public override int GetHolidaysCount(DateTime start, DateTime end)
+        public int GetHolidayCount(DateTime start, DateTime end)
         {
-            if (fixedHolidays == null) LoadHolidays(start, end);
+            if (holidays == null) LoadHolidays(start, end);
 
             int count = 0;
-            foreach (DateTime date in fixedHolidays)
+            foreach (DateTime date in holidays)
             {
                 if (HolidayHelper.isDateWorkDaysInBetween(date, start, end))
                 {
@@ -65,7 +54,7 @@ namespace CalculateHolidays.WorkDaysCalculate
                 }
             }
             return count;
-        }
 
+        }
     }
 }

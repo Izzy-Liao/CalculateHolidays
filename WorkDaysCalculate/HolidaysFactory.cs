@@ -8,10 +8,18 @@ using System.Threading.Tasks;
 namespace CalculateHolidays.WorkDaysCalculate
 {
 
-    public abstract class HolidaysFactory
+    public interface IHoliday
     {
-        public abstract int GetHolidaysCount(DateTime start, DateTime end);
-        protected abstract bool LoadHolidays(DateTime start, DateTime end);
+
+        public int GetHolidayCount(DateTime start, DateTime end);
+    }
+
+
+    public class HolidaysFactory
+    {
+        protected List<DateTime> holidays = null;
+        //    public  int GetHolidaysCount(DateTime start, DateTime end);
+        protected bool LoadHolidays(DateTime start, DateTime end) { return true; }
     }
 
 }
