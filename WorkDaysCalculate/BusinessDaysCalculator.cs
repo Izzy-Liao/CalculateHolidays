@@ -40,7 +40,7 @@ namespace CalculateHolidays.WorkDaysCalculate
         /// <param name="start"></param>
         /// <param name="end"></param>
         /// <returns></returns>
-        public static int getWorkDaysInBetween(DateTime start, DateTime end)
+        private static int getWorkDaysInBetween(DateTime start, DateTime end)
         {
             if (start > end) return -1;
             var totalDays = end.Subtract(start).Days; // days gap, exclude 'start date' and 'end date'
@@ -50,7 +50,7 @@ namespace CalculateHolidays.WorkDaysCalculate
             return businessdays;
         }
 
-        public static int getWorkDaysInBetween(string type, DateTime start, DateTime end)
+        public static int getWorkDaysInBetween(DateTime start, DateTime end, string type)
         {
             if (start > end) return -1;
             var businessDays = getWorkDaysInBetween(start, end);
@@ -62,6 +62,10 @@ namespace CalculateHolidays.WorkDaysCalculate
             else if (type == "fixed")
             {
                 factory = new FixedHolidayFactory();
+            }
+            else
+            {
+                getWorkDaysInBetween(start, end);
             }
 
             return businessDays - factory.GetHolidaysCount(start, end);

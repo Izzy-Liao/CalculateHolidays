@@ -38,19 +38,19 @@ namespace CalculateHolidays.Controllers
                 }
                 else if (action.Equals("GetWorkDays", StringComparison.OrdinalIgnoreCase))
                 {
-                    weekdays = BusinessDaysCalculator.getWorkDaysInBetween(start, end);
+                    weekdays = BusinessDaysCalculator.getWorkDaysInBetween(start, end,string.Empty);
                     var message = String.Format("There are {0} days between {1} and {2}! (Excludes weekends)", weekdays, start.ToShortDateString(), end.ToShortDateString());
                     SetTempDataMessage(weekdays, message);
                 }
                 else if (action.Equals("GetWorkDaysFixedHoliday", StringComparison.OrdinalIgnoreCase))
                 {
-                    weekdays = BusinessDaysCalculator.getWorkDaysInBetween("fixed",start, end);
+                    weekdays = BusinessDaysCalculator.getWorkDaysInBetween(start, end,"fixed");
                     var message = String.Format("There are {0} days between {1} and {2}! (Excludes weekends and Fixed Holiday {3})", weekdays, start.ToShortDateString(), end.ToShortDateString(), "1st Jan, 26th Jan, 1st Jun, 25th Dec");
                     SetTempDataMessage(weekdays, message);
                 }
                 else if (action.Equals("GetWorkDaysDynamicHoliday", StringComparison.OrdinalIgnoreCase))
                 {
-                    weekdays = BusinessDaysCalculator.getWorkDaysInBetween("dynamic",start, end);
+                    weekdays = BusinessDaysCalculator.getWorkDaysInBetween(start, end,"dynamic");
                     var message = String.Format("There are {0} days between {1} and {2}! (Excludes weekends and Dynamic Holiday {3})", weekdays, start.ToShortDateString(), end.ToShortDateString(), "1st Jan(New Year - Move to Monday), 26th Jan(Australia Day), 25th Dec(Christmas), Easter Sunday (Apr second Sunday), Easter Monday(Apr third Monday), Father's Day(Sep first Sunday)");
                     SetTempDataMessage(weekdays, message);
                 }
