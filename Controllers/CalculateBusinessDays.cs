@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using CalculateHolidays.WorkDaysCalculate;
-using CalculateHolidays.Shared;
+using BusinessDays;
 
 namespace CalculateHolidays.Controllers
 {
