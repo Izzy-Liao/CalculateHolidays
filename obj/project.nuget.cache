@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "2DpDMTJQJEZFMNBPPNL0SQZ3sVyP7JFtKy+K9YN/OlVJ7Fijg8FVrJao0frby0wjZsHVUZvh7ZxqUKXwV3jLeQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\izzyl\\source\\CalculateHolidays\\CalculateHolidays\\CalculateHolidays.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\izzyl\\.nuget\\packages\\nager.date\\1.28.2\\nager.date.1.28.2.nupkg.sha512"
+  ],
+  "logs": []
+}
