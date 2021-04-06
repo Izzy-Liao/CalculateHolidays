@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Nager.Date;
+using CalculateHolidays.ConfigReader;
 
 namespace CalculateHolidays
 {
@@ -25,6 +26,10 @@ namespace CalculateHolidays
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddOptions();
+
+            services.Configure<FixedHolidaySettings>(Configuration.GetSection(FixedHolidaySettings.sectionName));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,18 +1,29 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using BusinessDays.BusinessDaysCalculation;
 using BusinessDays.Holidays;
+using CalculateHolidays.ConfigReader;
+using Microsoft.Extensions.Configuration;
+using CalculateHolidays.HolidayFactory;
+
 
 namespace CalculateHolidays.Controllers
 {
     /// <summary>
     /// Calculate Business Days
     /// </summary>
-    public class CalculateBusinessDays : BaseController
+    public class CalculateBusinessDaysController : Controller
     {
+        private readonly IConfiguration _config;
         public IActionResult Index()
         {
             return View();
+        }
+
+        public CalculateBusinessDaysController(IConfiguration config)
+        {
+            _config = config;
         }
 
         /// <summary>
@@ -48,7 +59,7 @@ namespace CalculateHolidays.Controllers
                 }
                 else if (action.Equals("GetWorkDaysFixedHoliday", StringComparison.OrdinalIgnoreCase))
                 {
-                    IHoliday holidayFactory = new FixedHolidayFactory();
+                    IHoliday holidayFactory = CreateFixedHolidayFactory();
                     IGetBusinessDays getBusinessDays = new BusinessDaysCalculate(holidayFactory);
                     weekdays = getBusinessDays.GetBusinessDaysInBetween(start, end );
                     var message = String.Format("There are {0} days between {1} and {2}! (Excludes weekends and Fixed Holiday {3})", weekdays, start.ToShortDateString(), end.ToShortDateString(), "1st Jan, 26th Jan, 1st Jun, 25th Dec");
@@ -56,7 +67,7 @@ namespace CalculateHolidays.Controllers
                 }
                 else if (action.Equals("GetWorkDaysDynamicHoliday", StringComparison.OrdinalIgnoreCase))
                 {
-                    IHoliday holidayFactory = new DynamicHolidayFactory();
+                    IHoliday holidayFactory = CreateDynamicHolidayFactory();
                     IGetBusinessDays getBusinessDays = new BusinessDaysCalculate(holidayFactory);
                     weekdays = getBusinessDays.GetBusinessDaysInBetween(start, end);
                     var message = String.Format("There are {0} days between {1} and {2}! (Excludes weekends and Dynamic Holiday {3})", weekdays, start.ToShortDateString(), end.ToShortDateString(), "1st Jan(New Year - Move to Monday), 26th Jan(Australia Day), 25th Dec(Christmas), Easter Sunday (Apr second Sunday), Easter Monday(Apr third Monday), Father's Day(Sep first Sunday)");
@@ -74,6 +85,22 @@ namespace CalculateHolidays.Controllers
             return RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// Load Fixed Holiday and Create new Fixed Holiday Factory
+        /// </summary>
+        /// <returns></returns>
+        private IHoliday CreateFixedHolidayFactory()
+        {
+            IConfig configReader = new ConfigDefaultReader(_config);
+           
+            IHolidayFactoryCreate factoryCreate = new FixedFactoryCreate(configReader);
+            return factoryCreate.CreateHolidayFactory();
+        }
+
+        private IHoliday CreateDynamicHolidayFactory()
+        {
+           
+        }
         private void SetTempDataMessage(int result, string message)
         {
             if (result > 0)

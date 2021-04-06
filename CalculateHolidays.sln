@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculateHolidays", "Calcul
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessDays", "..\BusinessDaysCalculation\BusinessDays.csproj", "{934B892E-3235-447A-86D9-66A206655D8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessCalculationUnitTest", "..\BusinessCalculationUnitTest\BusinessCalculationUnitTest.csproj", "{EDBEAAB9-AF2B-427E-8E38-2B589D3BCF43}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessDaysCalculationUnitTest", "..\BusinessCalculationUnitTest\BusinessDaysCalculationUnitTest.csproj", "{EDBEAAB9-AF2B-427E-8E38-2B589D3BCF43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
