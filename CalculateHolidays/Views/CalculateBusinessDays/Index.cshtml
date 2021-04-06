@@ -1,0 +1,133 @@
+﻿@model CalculateHolidays.Models.CalculateBusinessDays
+
+@{
+    ViewData["Title"] = "Calculate";
+}
+
+<h1>Calculate Business Days</h1>
+<h2>Welcome! Dear guest</h2>
+<p>May you live in your dream!</p>
+<p>This page provide you the magic to calculate business days between <strong>01/01/2021</strong> to <strong>31/12/2030</strong></p>
+<p>Choose the period (start and end ), click your preferred button to get results</p>
+<p>The result will exclude the start date and end date</p>
+<p>The result will exclude Weekends and public holidays (Australia Nationwide)</p>
+<p><strong>The calculation assumes that Monday to Friday are workdays</strong></p>
+
+<div style="margin-top:20px; margin-bottom:20px">
+    <form asp-action="Calculate">
+        <div class="container">
+            <div class="row">
+                <h4>Input your start date and end date</h4>
+            </div>
+            <div class="row">
+                @Html.Label("Start Date", null, new { @class = "control-label col-sm-3" })
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(model => model.startDate, "{dd/mm/yyyy}", new { @class = "datepicker", @name="startDate" })
+                </div>
+                @Html.Label("End Date", null, new { @class = "control-label col-sm-3" })
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(model => model.endDate, "{dd/mm/yyyy}", new { @class = "datepicker", @name="endDate" })
+                </div>
+            </div>
+            <div class="row" style="margin-top:30px;">
+                <div class="col-sm-1">Results</div>
+                <div class="col-sm-11">
+              
+                    <p><strong> @TempData["ResultMessage"] </strong></p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top:30px;">
+                <h4>Choose your preferred button:</h4>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+
+                    <button class="btn-primary" type="submit" name="action" value="Default">Get Business Days</button>
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn-primary" type="submit" name="action" value="GetWorkDays">Get Week Days</button>
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn-primary" type="submit" name="action" value="GetWorkDaysFixedHoliday">Get Business Days (Fixed Holiday)</button>
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn-primary" type="submit" name="action" value="GetWorkDaysDynamicHoliday">Get Business Days (Dynamic Holiday)</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <h4>Default (Use Nager.Date to get Australia Public Holidays - in NSW)</h4>
+                    <p>Use C# we need to calculate business days between two dates considering multiple factors (OOOps)</p>
+                    <p>Only take into consideration of Australia and NSW public holiday, could be extended</p>
+                    <p>The soltuion should be a web application and should also be testable</p>
+                </div>
+                <div class="col-sm-3">
+                    <h4>Week days between two days</h4>
+                    <p>
+                        We are looking to calculate the number of week days between two dates.
+                        Assume week days are Monday to Friday.
+                        The returned count should not include from date or to date.
+                        Examples:
+                        - Thurs 7/8/2014 to Mon 11/8/2014 should return 1
+                        - Wed 13/8/2014 to Thurs 21/8/2014 should return 5
+                    </p>
+                </div>
+                <div class="col-sm-3">
+                    <h4>Business Days between two days (considering fixed holidays)</h4>
+                    <p>
+                        Extend the solution to calculate number of days between two dates. Considering week days are
+                        Mon – Fri. and existing list of fixed public holidays.
+                        The returned count should not include from date or to date.
+                        The list of public holidays (configurable) are for example:
+                        - 1/1/2021
+                        - 26/1/2021
+                        - 1/6/2021
+                        -25/12/2021
+                        Example:
+                        - Wed 13/8/2014 to Thurs 21/8/2014 should return 4
+                    </p>
+                </div>
+                <div class="col-sm-3">
+                    <h4>Business Days between two days (Dynamic Holidays)</h4>
+                    <p>
+                        Public holidays are a little bit more complex than simple fixed list of dates, basically three types
+                        of holidays
+                        1. Always on the same day even if it is a week end (like Anzac Day 25 April every year).
+                        2. On the same day as far as it is not a week end (like New Year 1st of every year unless it is a
+                        week end, then the holiday would be next Monday).
+                        3. Certain occurrence on a certain day in month (like Queen’s Birthday on the second Monday
+                        in June every year).
+                        Extend the solution to cater for these types of holidays. State which holidays you have added to
+                        your solution.
+                        Rules:
+                        New Year 1/1 - Move to next Monday
+                        Australia Day 26/1 - Fixed Date
+                        Christmas 25/12 - Fixed Date
+                        
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+@section scripts{
+    <link href="~/lib/jqueryui/jquery-ui.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jqueryui/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+        $('.datepicker').datepicker({
+            dateFormat: 'dd-MM-yy',
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "0:+9"
+        });
+    </script>
+
+}
+
+
+

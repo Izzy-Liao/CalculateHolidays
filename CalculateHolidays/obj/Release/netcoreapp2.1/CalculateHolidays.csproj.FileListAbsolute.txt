@@ -1,0 +1,3 @@
+C:\Users\izzyl\source\repos\CalculateHolidays\obj\Release\netcoreapp2.1\CalculateHolidays.csproj.CoreCompileInputs.cache
+C:\Users\izzyl\source\repos\CalculateHolidays\obj\Release\netcoreapp2.1\CalculateHolidays.AssemblyInfoInputs.cache
+C:\Users\izzyl\source\repos\CalculateHolidays\obj\Release\netcoreapp2.1\CalculateHolidays.AssemblyInfo.cs

@@ -1,0 +1,8 @@
+C:\Users\izzyl\source\CalculateHolidays\BusinessDaysCalculation\bin\Debug\netcoreapp3.1\BusinessDays.deps.json
+C:\Users\izzyl\source\CalculateHolidays\BusinessDaysCalculation\bin\Debug\netcoreapp3.1\BusinessDays.dll
+C:\Users\izzyl\source\CalculateHolidays\BusinessDaysCalculation\bin\Debug\netcoreapp3.1\BusinessDays.pdb
+C:\Users\izzyl\source\CalculateHolidays\BusinessDaysCalculation\obj\Debug\netcoreapp3.1\BusinessDays.AssemblyInfoInputs.cache
+C:\Users\izzyl\source\CalculateHolidays\BusinessDaysCalculation\obj\Debug\netcoreapp3.1\BusinessDays.AssemblyInfo.cs
+C:\Users\izzyl\source\CalculateHolidays\BusinessDaysCalculation\obj\Debug\netcoreapp3.1\BusinessDays.csproj.CoreCompileInputs.cache
+C:\Users\izzyl\source\CalculateHolidays\BusinessDaysCalculation\obj\Debug\netcoreapp3.1\BusinessDays.dll
+C:\Users\izzyl\source\CalculateHolidays\BusinessDaysCalculation\obj\Debug\netcoreapp3.1\BusinessDays.pdb

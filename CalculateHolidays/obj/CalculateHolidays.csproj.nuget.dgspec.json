@@ -1,0 +1,135 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\izzyl\\Downloads\\Izzy\\CalculateHolidays\\CalculateHolidays\\CalculateHolidays.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\izzyl\\Downloads\\Izzy\\CalculateHolidays\\BusinessDaysCalculation\\BusinessDays.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\izzyl\\Downloads\\Izzy\\CalculateHolidays\\BusinessDaysCalculation\\BusinessDays.csproj",
+        "projectName": "BusinessDays",
+        "projectPath": "C:\\Users\\izzyl\\Downloads\\Izzy\\CalculateHolidays\\BusinessDaysCalculation\\BusinessDays.csproj",
+        "packagesPath": "C:\\Users\\izzyl\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\izzyl\\Downloads\\Izzy\\CalculateHolidays\\BusinessDaysCalculation\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\izzyl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Nager.Date": {
+              "target": "Package",
+              "version": "[1.28.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\izzyl\\Downloads\\Izzy\\CalculateHolidays\\CalculateHolidays\\CalculateHolidays.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\izzyl\\Downloads\\Izzy\\CalculateHolidays\\CalculateHolidays\\CalculateHolidays.csproj",
+        "projectName": "CalculateHolidays",
+        "projectPath": "C:\\Users\\izzyl\\Downloads\\Izzy\\CalculateHolidays\\CalculateHolidays\\CalculateHolidays.csproj",
+        "packagesPath": "C:\\Users\\izzyl\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\izzyl\\Downloads\\Izzy\\CalculateHolidays\\CalculateHolidays\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\izzyl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\izzyl\\Downloads\\Izzy\\CalculateHolidays\\BusinessDaysCalculation\\BusinessDays.csproj": {
+                "projectPath": "C:\\Users\\izzyl\\Downloads\\Izzy\\CalculateHolidays\\BusinessDaysCalculation\\BusinessDays.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

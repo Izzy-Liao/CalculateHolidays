@@ -1,0 +1,131 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Nager.Date/1.28.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Nager.Date.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nager.Date.dll": {}
+        }
+      },
+      "BusinessDays/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Nager.Date": "1.28.2"
+        },
+        "compile": {
+          "bin/placeholder/BusinessDays.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BusinessDays.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Nager.Date/1.28.2": {
+      "sha512": "h3v3VgVLFCEO2DmEnWOlxJEfSj1lEsl26KaNdcgU6QB/lpUVIdT76vA7Ue2lswuX9qUAVCdd0ZKFJYo27w/lUQ==",
+      "type": "package",
+      "path": "nager.date/1.28.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "calendar.png",
+        "lib/net45/Nager.Date.dll",
+        "lib/net45/Nager.Date.xml",
+        "lib/net461/Nager.Date.dll",
+        "lib/net461/Nager.Date.xml",
+        "lib/net5.0/Nager.Date.dll",
+        "lib/net5.0/Nager.Date.xml",
+        "lib/netstandard2.0/Nager.Date.dll",
+        "lib/netstandard2.0/Nager.Date.xml",
+        "nager.date.1.28.2.nupkg.sha512",
+        "nager.date.nuspec",
+        "readme.txt"
+      ]
+    },
+    "BusinessDays/1.0.0": {
+      "type": "project",
+      "path": "../BusinessDaysCalculation/BusinessDays.csproj",
+      "msbuildProject": "../BusinessDaysCalculation/BusinessDays.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.1": [
+      "BusinessDays >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\izzyl\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\izzyl\\Downloads\\Izzy\\CalculateHolidays\\CalculateHolidays\\CalculateHolidays.csproj",
+      "projectName": "CalculateHolidays",
+      "projectPath": "C:\\Users\\izzyl\\Downloads\\Izzy\\CalculateHolidays\\CalculateHolidays\\CalculateHolidays.csproj",
+      "packagesPath": "C:\\Users\\izzyl\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\izzyl\\Downloads\\Izzy\\CalculateHolidays\\CalculateHolidays\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\izzyl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.1"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "projectReferences": {
+            "C:\\Users\\izzyl\\Downloads\\Izzy\\CalculateHolidays\\BusinessDaysCalculation\\BusinessDays.csproj": {
+              "projectPath": "C:\\Users\\izzyl\\Downloads\\Izzy\\CalculateHolidays\\BusinessDaysCalculation\\BusinessDays.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
