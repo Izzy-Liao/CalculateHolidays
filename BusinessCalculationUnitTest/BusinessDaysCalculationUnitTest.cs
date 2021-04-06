@@ -30,6 +30,16 @@ namespace BusinessCalculationUnitTest
         }
 
         [TestMethod]
+        public void TestGetWorkDaysExtremeCase()
+        {
+            IGetWorkDays workDaysCalculate = new WorkDaysCalculate();
+            DateTime start = DateTime.MinValue;
+            DateTime end = DateTime.MaxValue;
+            int workDays = workDaysCalculate.GetWorkDays(start, end);
+            Assert.AreEqual(workDays, 2608613);
+        }
+
+        [TestMethod]
         public void TestGetBusinessDaysWithNSWHoliday()
         {
             IHoliday holidayFactory = new HolidaysFactory();
