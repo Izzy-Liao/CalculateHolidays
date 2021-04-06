@@ -5,7 +5,7 @@ using BusinessDays.BusinessDaysCalculation;
 using BusinessDays.Holidays;
 using CalculateHolidays.ConfigReader;
 using Microsoft.Extensions.Configuration;
-using CalculateHolidays.HolidayFactory;
+using CalculateHolidays.HolidayFactoryCreate;
 
 
 namespace CalculateHolidays.Controllers
@@ -13,7 +13,7 @@ namespace CalculateHolidays.Controllers
     /// <summary>
     /// Calculate Business Days
     /// </summary>
-    public class CalculateBusinessDaysController : Controller
+    public class CalculateBusinessDaysController : BaseController
     {
         private readonly IConfiguration _config;
         public IActionResult Index()
@@ -92,15 +92,18 @@ namespace CalculateHolidays.Controllers
         private IHoliday CreateFixedHolidayFactory()
         {
             IConfig configReader = new ConfigDefaultReader(_config);
-           
             IHolidayFactoryCreate factoryCreate = new FixedFactoryCreate(configReader);
             return factoryCreate.CreateHolidayFactory();
         }
 
         private IHoliday CreateDynamicHolidayFactory()
         {
-           
+            IConfig configReader = new ConfigDefaultReader(_config);
+            IHolidayFactoryCreate factoryCreate = new DynamicFactoryCreate(configReader);
+            return factoryCreate.CreateHolidayFactory();
         }
+
+
         private void SetTempDataMessage(int result, string message)
         {
             if (result > 0)

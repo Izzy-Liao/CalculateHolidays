@@ -15,7 +15,7 @@ namespace CalculateHolidays.HolidayFactoryCreate
 
         public IHoliday CreateHolidayFactory()
         {
-            IHoliday holidayFactory = new DynamicHolidayFactory(configReader.GetHolidayRules(), configReader.GetHolidayCertainOccurance());
+            IHoliday holidayFactory = new DynamicHolidayFactory(_configReader.GetHolidayRules(), _configReader.GetHolidayCertainOccurance());
             return holidayFactory;
         }
 

@@ -27,9 +27,7 @@ namespace CalculateHolidays
         {
             services.AddControllersWithViews();
 
-            services.AddOptions();
-
-            services.Configure<FixedHolidaySettings>(Configuration.GetSection(FixedHolidaySettings.sectionName));
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

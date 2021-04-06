@@ -1,5 +1,6 @@
 ﻿using BusinessDays.Holidays;
 using CalculateHolidays.ConfigReader;
+using System.Collections.Generic;
 
 
 namespace CalculateHolidays.HolidayFactoryCreate
@@ -20,11 +21,5 @@ namespace CalculateHolidays.HolidayFactoryCreate
             return holidayFactory;
         }
 
-        public IHoliday GetFactory(List<HolidayRule> holidayRules, List<HolidayCertainOccurance> certainHolidayOccurances)
-        {
-            IConfig config = new ConfigDefaultReader(_config);
-            IHoliday holidayFactory = new DynamicHolidayFactory(config.GetHolidayRules(), config.GetHolidayCertainOccurance());
-            return holidayFactory;
-        }
     }
 }
